@@ -1,0 +1,7 @@
+C:\C# NAUFAL\students\students\obj\Debug\students.csproj.AssemblyReference.cache
+C:\C# NAUFAL\students\students\obj\Debug\students.csproj.CoreCompileInputs.cache
+C:\C# NAUFAL\students\students\bin\Debug\students.exe.config
+C:\C# NAUFAL\students\students\bin\Debug\students.exe
+C:\C# NAUFAL\students\students\bin\Debug\students.pdb
+C:\C# NAUFAL\students\students\obj\Debug\students.exe
+C:\C# NAUFAL\students\students\obj\Debug\students.pdb
