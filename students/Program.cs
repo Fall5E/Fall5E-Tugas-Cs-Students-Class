@@ -11,9 +11,9 @@ namespace students
         static void Main(string[] args)
         {
             students s1 = new students();
-            s1.name = "Andi";
+            s1.name = "MUHAMMAD NAUFAL NAWARUDDIN SYAH";
             s1.age = 20;
-            s1.studentId = "S001";
+            s1.studentId = "25.61.0287";
             s1.score = 85;
             s1.displayInfo();
             s1.CheckStatus();
