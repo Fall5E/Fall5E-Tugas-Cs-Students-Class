@@ -1,0 +1,49 @@
+@page
+@model TenThousandHours.Pages.ArchiveModel
+@{
+    ViewData["Title"] = "Archive";
+}
+
+<h1>Archive / Search</h1>
+
+<form method="get" class="row g-2 mb-3">
+    <div class="col-sm-10">
+        <input asp-for="Query" class="form-control" placeholder="Search learning, work, journal..." />
+    </div>
+    <div class="col-sm-2 d-grid">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+@if (!string.IsNullOrWhiteSpace(Model.Query))
+{
+    @if (!Model.Results.Any())
+    {
+        <p>No result found for <strong>@Model.Query</strong>.</p>
+    }
+    else
+    {
+        <p class="text-muted">@Model.Results.Count result(s)</p>
+
+        @foreach (var result in Model.Results)
+        {
+            <article class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">@result.EntryDate.ToString("yyyy MMM dd")</h5>
+                    @if (!string.IsNullOrWhiteSpace(result.LearningTopic))
+                    {
+                        <p class="mb-1">📚 @result.LearningTopic</p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(result.WorkNotes))
+                    {
+                        <p class="mb-1">💼 @result.WorkNotes</p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(result.WhatHappened))
+                    {
+                        <p class="mb-0">📝 @result.WhatHappened</p>
+                    }
+                </div>
+            </article>
+        }
+    }
+}

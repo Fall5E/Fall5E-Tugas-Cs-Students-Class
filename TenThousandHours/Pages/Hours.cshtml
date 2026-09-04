@@ -1,0 +1,39 @@
+@page
+@model TenThousandHours.Pages.HoursModel
+@{
+    ViewData["Title"] = "10,000 Hours";
+}
+
+<h1>10,000 Hours</h1>
+
+<div class="mb-3">
+    <h4>@Model.TotalHours.ToString("0.##") / 10,000 hours</h4>
+    <div class="progress" role="progressbar" aria-label="10,000 Hours Progress" aria-valuenow="@((int)Model.ProgressPercent)" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" style="width: @Model.ProgressPercent.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)%">@Model.ProgressPercent.ToString("0.##")%</div>
+    </div>
+</div>
+
+@if (!Model.ActivityTotals.Any())
+{
+    <p>No activities logged yet from <a asp-page="/Today">Today</a>.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Activity</th>
+                <th>Total Hours</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var activity in Model.ActivityTotals)
+        {
+            <tr>
+                <td>@activity.ActivityName</td>
+                <td>@activity.Hours.ToString("0.##")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

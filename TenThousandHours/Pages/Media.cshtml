@@ -1,0 +1,38 @@
+@page
+@model TenThousandHours.Pages.MediaModel
+@{
+    ViewData["Title"] = "Media";
+}
+
+<h1>Media</h1>
+
+@if (!Model.Groups.Any())
+{
+    <p>No media references yet. Add in <a asp-page="/Today">Today</a>.</p>
+}
+else
+{
+    @foreach (var group in Model.Groups)
+    {
+        <section class="mb-4">
+            <h3>@group.Type</h3>
+            <ul class="list-group">
+                @foreach (var item in group.Items)
+                {
+                    <li class="list-group-item">
+                        <strong>@item.EntryDate.ToString("yyyy MMM dd")</strong>
+                        - @item.StorageProvider
+                        @if (!string.IsNullOrWhiteSpace(item.YouTubeVideoId))
+                        {
+                            <span> - YouTube: @item.YouTubeVideoId</span>
+                        }
+                        else if (!string.IsNullOrWhiteSpace(item.Url))
+                        {
+                            <span> - <a href="@item.Url" target="_blank" rel="noopener">Open</a></span>
+                        }
+                    </li>
+                }
+            </ul>
+        </section>
+    }
+}
