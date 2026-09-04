@@ -1,0 +1,94 @@
+@page
+@model TenThousandHours.Pages.TodayModel
+@{
+    ViewData["Title"] = "Today";
+}
+
+<h1>Today</h1>
+<p class="text-muted">Capture what happened today. One entry per day.</p>
+
+@if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+{
+    <div class="alert alert-success">@Model.StatusMessage</div>
+}
+
+<form method="post" class="row g-3">
+    <div class="col-12">
+        <label asp-for="Input.WhatHappened" class="form-label"></label>
+        <textarea asp-for="Input.WhatHappened" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Input.GratefulFor" class="form-label"></label>
+        <textarea asp-for="Input.GratefulFor" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Input.WhatILearned" class="form-label"></label>
+        <textarea asp-for="Input.WhatILearned" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Input.WhatMadeTodayMeaningful" class="form-label"></label>
+        <textarea asp-for="Input.WhatMadeTodayMeaningful" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Input.ActivitiesText" class="form-label"></label>
+        <textarea asp-for="Input.ActivitiesText" class="form-control" rows="4" placeholder="Coding|3&#10;Gym|2"></textarea>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Input.WorkNotes" class="form-label"></label>
+        <textarea asp-for="Input.WorkNotes" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Input.LearningTopic" class="form-label"></label>
+        <textarea asp-for="Input.LearningTopic" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Input.IncomeSource" class="form-label"></label>
+        <input asp-for="Input.IncomeSource" class="form-control" />
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Input.IncomeAmount" class="form-label"></label>
+        <input asp-for="Input.IncomeAmount" class="form-control" />
+    </div>
+
+    <div class="col-md-2">
+        <label asp-for="Input.ContextWhere" class="form-label"></label>
+        <input asp-for="Input.ContextWhere" class="form-control" />
+    </div>
+
+    <div class="col-md-2">
+        <label asp-for="Input.ContextWith" class="form-label"></label>
+        <input asp-for="Input.ContextWith" class="form-control" />
+    </div>
+
+
+    <div class="col-12">
+        <label asp-for="Input.ActiveGoalsText" class="form-label"></label>
+        <textarea asp-for="Input.ActiveGoalsText" class="form-control" rows="3" placeholder="Build consistency&#10;Become better PM"></textarea>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Input.PhotoUrls" class="form-label"></label>
+        <textarea asp-for="Input.PhotoUrls" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Input.DocumentaryYouTubeIds" class="form-label"></label>
+        <textarea asp-for="Input.DocumentaryYouTubeIds" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Input.FaceOfDayUrl" class="form-label"></label>
+        <input asp-for="Input.FaceOfDayUrl" class="form-control" />
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save Today</button>
+    </div>
+</form>

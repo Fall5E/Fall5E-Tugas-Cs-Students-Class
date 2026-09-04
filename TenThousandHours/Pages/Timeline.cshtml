@@ -1,0 +1,47 @@
+@page
+@model TenThousandHours.Pages.TimelineModel
+@{
+    ViewData["Title"] = "Timeline";
+}
+
+<h1>Timeline</h1>
+
+@if (!Model.Entries.Any())
+{
+    <p>No entries yet. Start from <a asp-page="/Today">Today</a>.</p>
+}
+else
+{
+    @foreach (var entry in Model.Entries)
+    {
+        <article class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">@entry.EntryDate.ToString("yyyy MMM dd")</h5>
+                @if (entry.HasFaceOfDay)
+                {
+                    <div>📸 Face of the Day</div>
+                }
+                @if (!string.IsNullOrWhiteSpace(entry.WorkNotes))
+                {
+                    <div>💼 @entry.WorkNotes</div>
+                }
+                @if (!string.IsNullOrWhiteSpace(entry.LearningTopic))
+                {
+                    <div>📚 @entry.LearningTopic</div>
+                }
+                @if (entry.ActivitySummary.Any())
+                {
+                    <div>🏃 @string.Join(", ", entry.ActivitySummary)</div>
+                }
+                @if (entry.IncomeAmount.HasValue)
+                {
+                    <div>💰 @entry.IncomeAmount.Value.ToString("0.##")</div>
+                }
+                @if (!string.IsNullOrWhiteSpace(entry.WhatHappened))
+                {
+                    <p class="mt-2 mb-0">📝 @entry.WhatHappened</p>
+                }
+            </div>
+        </article>
+    }
+}
